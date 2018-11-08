@@ -1,45 +1,26 @@
-puts "Сторона А:"
-side_a = gets.chomp.to_f
+sides = []
+puts "Введите стороны треугольника"
+puts 'Сторона A:'
+sides << gets.chomp.to_f
+puts 'Сторона B:'
+sides << gets.chomp.to_f
+puts 'Сторона C:'
+sides << gets.chomp.to_f
 
-puts "Сторона В:"
-side_b = gets.chomp.to_f
+sorted = sides.sort
 
-puts "Сторона С:"
-side_c = gets.chomp.to_f
+hypotenuse = sorted[2]
+second_side = sorted[1]
+third_side = sorted[0]
 
-if side_a == side_b && side_a == side_c
-  puts 'Треугольник равнобедренный и равносторонний'
-  puts 'Значит, не прямоугольный'
+if hypotenuse == second_side ** 2 + third_side ** 2
+  puts 'Треугольник прямоугольный'
 end
 
-if side_a > side_b && side_a > side_c
-  hypothenuse = side_a
-  if hypothenuse == side_b**2 + side_c**2
-    puts 'Треугольник прямоугольный'
-    if side_a == side_b || side_a == side_c || side_b == side_c
-      puts 'К тому же равнобедренный'
-    else puts "Не равнобедренный"
-    end
-  else puts 'Попробуйте снова!'
-  end
-elsif side_b > side_a && side_b > side_c
-  hypothenuse = side_b
-  if hypothenuse == side_a**2 + side_c**2
-    puts 'Треугольник прямоугольный'
-    if side_a == side_b || side_a == side_c || side_b == side_c
-      puts 'К тому же равнобедренный'
-    else puts "Не равнобедренный"
-    end
-  else puts 'Попробуйте снова!'
-  end
-elsif side_c > side_a && side_c > side_b
-  hypothenuse = side_c
-  if hypothenuse == side_a**2 + side_b**2
-    puts 'Треугольник прямоугольный'
-    if side_a == side_b || side_a == side_c || side_b == side_c
-      puts 'К тому же равнобедренный'
-    else puts "Не равнобедренный"
-    end
-  else puts 'Попробуйте снова!'
-  end
+if hypotenuse == second_side && hypotenuse == third_side
+  puts 'Треугольник равнобедренный и равносторонний'
+  puts 'Значит, не прямоугольный'
+elsif second_side == third_side || hypotenuse == second_side || hypotenuse == third_side
+  puts 'Треугольник равнобедренный'
+else puts 'Попробуйте снова!'
 end
